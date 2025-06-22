@@ -1,0 +1,27 @@
+<odoo>
+  <template id="report_invoice_template">
+    <t t-call="web.external_layout">
+      <div class="page">
+        <h2 style="font-weight:bold;">Invoice for Order Detail</h2>
+        <p><strong>Guest:</strong> <t t-esc="doc.guest_id.name"/></p>
+        <p><strong>Email:</strong> <t t-esc="doc.guest_id.email"/></p>
+        <p><strong>Listing:</strong> <t t-esc="doc.listing_id.house_name"/></p>
+        <p><strong>Check-in:</strong> <t t-esc="doc.check_in_date"/></p>
+        <p><strong>Check-out:</strong> <t t-esc="doc.check_out_date"/></p>
+        <p><strong>Total Days:</strong> <t t-esc="doc.total_days"/></p>
+        <p><strong>Price Per Night:</strong> $<t t-esc="doc.listing_id.price_per_night"/></p>
+        <h3>Total Price: $<t t-esc="doc.total_price"/></h3>
+        <p style="margin-top:20px;">Thank you for choosing us!</p>
+      </div>
+    </t>
+  </template>
+
+  <report
+    id="action_invoice_pdf_template"
+    string="Invoice PDF"
+    model="habin.order_detail"
+    report_type="qweb-pdf"
+    name="habin_testt15.report_invoice_template"
+    file="habin_testt15.report_invoice_template"
+    print_report_name="'Invoice_' + object.guest_id.name"/>
+</odoo>

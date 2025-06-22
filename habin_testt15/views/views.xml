@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="habin.list">
+      <field name="name">habin list</field>
+      <field name="model">habin.habin</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="habin.action_window">
+      <field name="name">habin window</field>
+      <field name="res_model">habin.habin</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="habin.action_server">
+      <field name="name">habin server</field>
+      <field name="model_id" ref="model_habin_habin"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="habin" id="habin.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="habin.menu_1" parent="habin.menu_root"/>
+    <menuitem name="Menu 2" id="habin.menu_2" parent="habin.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="habin.menu_1_list" parent="habin.menu_1"
+              action="habin.action_window"/>
+    <menuitem name="Server to list" id="habin" parent="habin.menu_2"
+              action="habin.action_server"/>
+-->
+  </data>
+</odoo>

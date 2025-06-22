@@ -1,0 +1,33 @@
+<odoo>
+    <record id="view_form_habin_host" model="ir.ui.view">
+        <field name="name">habin.host.form</field>
+        <field name="model">habin.host</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="host_fname"/>
+                        <field name="host_lname"/>
+                        <field name="gender"/>
+                        <field name="host_email"/>
+                        <field name="host_phoneNumber"/>
+                        <field name="created_at" readonly="1"/>
+                        <!-- <field name="name" readonly="1"/> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_habin_host" model="ir.ui.view">
+        <field name="name">habin.host.tree</field>
+        <field name="model">habin.host</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="host_fname"/>
+                <field name="host_lname"/>
+                <field name="host_email"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root menu -->
+    <menuitem id="menu_habin_root" name="Habin" sequence="10"/>
+
+    <!-- Actions -->
+    <record id="action_habin_guest" model="ir.actions.act_window">
+        <field name="name">Guests</field>
+        <field name="res_model">habin.guest</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_habin_host" model="ir.actions.act_window">
+        <field name="name">Hosts</field>
+        <field name="res_model">habin.host</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_habin_listing" model="ir.actions.act_window">
+        <field name="name">Listings</field>
+        <field name="res_model">habin.list</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_habin_order" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="res_model">habin.orders</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_habin_order_detail" model="ir.actions.act_window">
+        <field name="name">All Order Details</field>
+        <field name="res_model">habin.order_detail</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_habin_payment" model="ir.actions.act_window">
+        <field name="name">Payments</field>
+        <field name="res_model">habin.payment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_habin_review" model="ir.actions.act_window">
+        <field name="name">Reviews</field>
+        <field name="res_model">habin.review</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Wizard action -->
+    <record id="action_order_detail_wizard" model="ir.actions.act_window">
+        <field name="name">Guest Order Detail Report</field>
+        <field name="res_model">habin.order.detail.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_habin_order_create_wizard" model="ir.actions.act_window">
+        <field name="name">Create Order</field>
+        <field name="res_model">habin.order.create.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_order_progress" model="ir.actions.act_window">
+        <field name="name">Order Progress</field>
+        <field name="res_model">habin.order.progress</field>
+        <field name="view_mode">kanban,graph,tree</field>
+    </record>
+
+      <record id="action_generate_invoice_wizard" model="ir.actions.act_window">
+        <field name="name">Generate Invoice</field>
+        <field name="res_model">habin.generate.invoice.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_habin_order_detail_calendar" model="ir.actions.act_window">
+        <field name="name">Order Calendar</field>
+        <field name="res_model">habin.order_detail</field>
+        <field name="view_mode">calendar,tree,form</field>
+        <field name="view_id" ref="view_calendar_habin_order_detail"/>
+    </record>
+
+
+    <!-- Menus -->
+    <menuitem id="menu_habin_guest" name="Guests" parent="menu_habin_root" sequence="1" action="action_habin_guest"/>
+    <menuitem id="menu_habin_host" name="Hosts" parent="menu_habin_root" sequence="2" action="action_habin_host"/>
+    <menuitem id="menu_habin_listing" name="Listings" parent="menu_habin_root" sequence="3" action="action_habin_listing"/>
+    <menuitem id="menu_habin_order" name="Orders" parent="menu_habin_root" sequence="4" action="action_habin_order"/>
+
+    <!-- Parent menu for Order Detail -->
+    <menuitem id="menu_habin_order_detail_root"
+              name="Order Details"
+              parent="menu_habin_root"
+              sequence="5"/>
+
+    <!-- Submenus -->
+    <menuitem id="menu_habin_order_detail"
+              name="All Order Details"
+              parent="menu_habin_order_detail_root"
+              action="action_habin_order_detail"
+              sequence="1"/>
+    
+    <menuitem id="menu_order_detail_wizard"
+              name="Guest Order Detail Report"
+              parent="menu_habin_order_detail_root"
+              action="action_order_detail_wizard"
+              sequence="2"/>
+
+    <!-- Нэмэлт цэс -->
+    <menuitem id="menu_habin_create_order" 
+              name="Quick Order" 
+              parent="menu_habin_order_detail_root"
+              action="action_habin_order_create_wizard" 
+              sequence="3"/>
+
+    <menuitem id="menu_order_progress"
+                name="Order Progress"
+                parent="menu_habin_order_detail_root"
+                action="action_order_progress"
+                sequence="4"/>
+    
+    <menuitem id="menu_generate_invoice_wizard"
+            name="Generate Invoice"
+            parent="menu_habin_order_detail_root"
+            action="action_generate_invoice_wizard"
+            sequence="5"/>
+
+    <menuitem id="menu_order_detail_calendar"
+            name="Order Calendar"
+            parent="menu_habin_order_detail_root"
+            action="action_habin_order_detail_calendar"
+            sequence="6"/>
+
+
+    <menuitem id="menu_habin_payment" name="Payments" parent="menu_habin_root" sequence="6" action="action_habin_payment"/>
+    <menuitem id="menu_habin_review" name="Reviews" parent="menu_habin_root" sequence="7" action="action_habin_review"/>
+</odoo>

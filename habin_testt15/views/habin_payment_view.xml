@@ -1,0 +1,31 @@
+<odoo>
+    <record id="view_form_habin_payment" model="ir.ui.view">
+        <field name="name">habin.payment.form</field>
+        <field name="model">habin.payment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="order_id"/>
+                        <field name="payment_method"/>
+                        <field name="payment_status"/>
+                        <field name="created_at" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_habin_payment" model="ir.ui.view">
+        <field name="name">habin.payment.tree</field>
+        <field name="model">habin.payment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="order_id"/>
+                <field name="payment_method"/>
+                <field name="payment_status"/>
+                <field name="created_at"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

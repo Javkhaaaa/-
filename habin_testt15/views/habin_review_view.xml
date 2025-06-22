@@ -1,0 +1,35 @@
+<odoo>
+    <record id="view_form_habin_review" model="ir.ui.view">
+        <field name="name">habin.review.form</field>
+        <field name="model">habin.review</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="order_id"/>
+                        <field name="guest_domain_id" invisible="1"/>
+                        <field name="listing_domain_id" invisible="1"/> <!-- ЗААВАЛ -->
+                        <field name="listing_id" domain="[('id', '=?', listing_domain_id)]"/>
+                        <field name="guest_id" domain="[('id', '=?', guest_domain_id)]"/>
+                        <field name="review_star"/>
+                        <field name="review_text"/>
+                        <field name="created_at" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_habin_review" model="ir.ui.view">
+        <field name="name">habin.review.tree</field>
+        <field name="model">habin.review</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="listing_id"/>
+                <field name="guest_id"/>
+                <field name="review_star"/>
+                <field name="created_at"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

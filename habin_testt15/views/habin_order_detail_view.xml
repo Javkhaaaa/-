@@ -1,0 +1,50 @@
+<odoo>
+    <record id="view_form_habin_order_detail" model="ir.ui.view">
+        <field name="name">habin.order_detail.form</field>
+        <field name="model">habin.order_detail</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="order_id"/>
+                        <field name="listing_id"/>
+                        <field name="guest_domain_id" invisible="1"/>
+                        <field name="guest_id" domain="[('id', '=?', guest_domain_id)]"/>
+                        <field name="check_in_date"/>
+                        <field name="check_out_date"/>
+                        <field name="total_days" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_habin_order_detail" model="ir.ui.view">
+        <field name="name">habin.order_detail.tree</field>
+        <field name="model">habin.order_detail</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="order_id"/>
+                <field name="listing_id"/>
+                <field name="guest_id"/>
+                <field name="check_in_date"/>
+                <field name="check_out_date"/>
+                <field name="total_days"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_calendar_habin_order_detail" model="ir.ui.view">
+        <field name="name">habin.order.detail.calendar</field>
+        <field name="model">habin.order_detail</field>
+        <field name="arch" type="xml">
+            <calendar string="Order Calendar"
+                    date_start="check_in_date"
+                    date_stop="check_out_date"
+                    color="guest_id">
+                <field name="guest_id"/>
+                <field name="listing_id"/>
+            </calendar>
+        </field>
+    </record>
+</odoo>

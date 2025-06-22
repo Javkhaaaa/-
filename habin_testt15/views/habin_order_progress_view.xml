@@ -1,0 +1,63 @@
+<odoo>
+  <!-- Kanban View -->
+  <record id="view_order_progress_kanban" model="ir.ui.view">
+    <field name="name">habin.order.progress.kanban</field>
+    <field name="model">habin.order.progress</field>
+    <field name="arch" type="xml">
+      <kanban class="o_kanban_small_column">
+        <field name="progress_percent"/>
+        <field name="guest_id"/>
+        <field name="listing_id"/>
+        <field name="check_in_date"/>
+        <field name="check_out_date"/>
+        <field name="total_price"/>
+        <templates>
+          <t t-name="kanban-box">
+            <div class="oe_kanban_global_click o_kanban_card">
+              <strong><t t-esc="record.guest_id.value"/></strong>
+              <div>Listing: <t t-esc="record.listing_id.value"/></div>
+              <div>Total Price: <t t-esc="record.total_price.value"/> ₮</div>
+              <div>Check-in: <t t-esc="record.check_in_date.value"/></div>
+              <div>Check-out: <t t-esc="record.check_out_date.value"/></div>
+              <div class="mt8">
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar"
+                       t-att-style="'width: %s%%' % record.progress_percent.value"
+                       aria-valuenow="record.progress_percent.value" aria-valuemin="0" aria-valuemax="100">
+                    <t t-esc="record.progress_percent.value"/>%
+                  </div>
+                </div>
+              </div>
+            </div>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
+
+  <!-- Graph View -->
+  <record id="view_order_progress_graph" model="ir.ui.view">
+    <field name="name">habin.order.progress.graph</field>
+    <field name="model">habin.order.progress</field>
+    <field name="arch" type="xml">
+      <graph string="Booking Progress Over Time" type="line">
+        <field name="check_in_date" type="row"/>
+        <field name="progress_percent" type="measure"/>
+        <field name="guest_id" type="col"/>
+      </graph>
+    </field>
+  </record>
+
+  <!-- Tree View -->
+  <record id="view_order_progress_tree" model="ir.ui.view">
+    <field name="name">habin.order.progress.tree</field>
+    <field name="model">habin.order.progress</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="guest_id"/>
+        <field name="listing_id"/>
+        <field name="progress_percent"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

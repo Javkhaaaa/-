@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_habin_guest,access_habin_guest,model_habin_guest,base.group_user,1,1,1,1
+access_habin_host,access_habin_host,model_habin_host,base.group_user,1,1,1,1
+access_habin_list,access_habin_list,model_habin_list,base.group_user,1,1,1,1
+access_habin_orders,access_habin_orders,model_habin_orders,base.group_user,1,1,1,1
+access_habin_order_detail,access_habin_order_detail,model_habin_order_detail,base.group_user,1,1,1,1
+access_habin_payment,access_habin_payment,model_habin_payment,base.group_user,1,1,1,1
+access_habin_review,access_habin_review,model_habin_review,base.group_user,1,1,1,1
+access_habin_order_detail_report_wizard,access_habin_order_detail_report_wizard,model_habin_order_detail_report_wizard,base.group_user,1,1,1,0
+access_habin_order_create_wizard,access_habin_order_create_wizard,model_habin_order_create_wizard,base.group_user,1,1,1,1
+access_habin_order_progress,access_habin_order_progress,model_habin_order_progress,base.group_user,1,1,1,1
+access_habin_generate_invoice_wizard,access_habin_generate_invoice_wizard,model_habin_generate_invoice_wizard,base.group_user,1,1,1,0
+

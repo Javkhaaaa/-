@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Kanban View -->
+    <record id="view_kanban_habin_listing" model="ir.ui.view">
+        <field name="name">habin.list.kanban</field>
+        <field name="model">habin.list</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_example">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record">
+                            <div class="o_kanban_image text-center">
+                                <img t-if="record.image.raw_value"
+                                     t-att-src="'data:image/png;base64,%s' % record.image.raw_value"
+                                     class="img img-fluid rounded shadow-sm"
+                                     style="max-height:120px; max-width:100%; object-fit:cover;" />
+                                <div t-if="not record.image.raw_value"
+                                     class="o_kanban_image_placeholder bg-secondary text-white text-center p-2"
+                                     style="height: 120px;">
+                                    No Image
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <strong><field name="house_name"/></strong><br/>
+                                <small><field name="location"/></small><br/>
+                                <span class="badge badge-info"><field name="house_type"/></span><br/>
+                                <div class="text-muted"><t t-esc="record.price_per_night.value"/> ₮ / night</div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Graph View -->
+    <record id="view_graph_habin_listing" model="ir.ui.view">
+        <field name="name">habin.list.graph</field>
+        <field name="model">habin.list</field>
+        <field name="arch" type="xml">
+            <graph string="Average Price by House Type" type="bar">
+                <field name="price_per_night" type="measure"/>
+                <field name="house_type" type="row"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_form_habin_list" model="ir.ui.view">
+        <field name="name">habin.list.form</field>
+        <field name="model">habin.list</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="host_id"/>
+                        <field name="house_name"/>
+                        <field name="house_type"/>
+                        <field name="description"/>
+                        <field name="location"/>
+                        <field name="price_per_night"/>
+                        <field name="deposit"/>
+                        <field name="availability_status"/>
+                        <field name="image" widget="image" class="oe_avatar" style="max-width: 150px; max-height: 150px;"/>
+                        <field name="created_at" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_tree_habin_list" model="ir.ui.view">
+        <field name="name">habin.list.tree</field>
+        <field name="model">habin.list</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="house_name"/>
+                <field name="house_type"/>
+                <field name="location"/>
+                <field name="price_per_night"/>
+                <!-- Зөвхөн image талбар нь binary төрөлтэй бол widget="image" хэрэглэ -->
+                <field name="image" widget="image" class="list_image"/>
+                <field name="availability_status"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
